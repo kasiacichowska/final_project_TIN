@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal Diary - Rejestracja</title>
+</head>
+<body>
+<h2>Rejestracja konta</h2>
+<p>Uwaga! Hasło powinno mieć od 2 do 60 znaków.</p>
+
+<form name="registrationForm" onsubmit="return validateForm()">
+    <div>
+        <p>Nazwa użytkownika: <input type="text" name="username"/></p>
+        <span id="userNameError" style="color:red;"></span>
+        <p>E-mail: <input type="text" name="email" /></p>
+        <span id="emailError" style="color:red;"></span>
+        <p>Hasło: <input type="password" name="haslo" /></p>
+        <span id="passwordError" style="color:red;"></span>
+    </div>
+    <input type="submit" value="Submit">
+    <p id="summaryError" style="color:red;"></p>
+</form>
+
+<script>
+    function validateForm() {
+        const emailField = document.forms["registrationForm"]["email"];
+        const userName = document.forms["registrationForm"]["username"];
+        const passwordField = document.forms["registrationForm"]["haslo"];
+        const email = emailField.value;
+        const password = passwordField.value;
+        const errorMessages = [];
+
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("passwordError").textContent = "";
+        document.getElementById("summaryError").textContent = "";
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if(email.length === 0){
+            document.getElementById("emailError").textContent = "Pole Email nie może być puste";
+            errorMessages.push("Pole Email nie może być puste");
+        }
+        else if (email.replace(/\s/g, "") === "") {
+            document.getElementById("emailError").textContent = "Email nie może składać się wyłącznie ze spacji.";
+            errorMessages.push("Email nie może zawierać wyłącznie spacji.");
+        }
+        else if (!emailRegex.test(email)) {
+            document.getElementById("emailError").textContent = "Wprowadź poprawny adres e-mail.";
+            errorMessages.push("Niepoprawny adres e-mail.");
+        }
+
+        if (password.length === 0){
+            document.getElementById("passwordError").textContent = "Pole haslo nie może być puste";
+            errorMessages.push("Pole haslo nie może być puste");
+        }
+        else if (password.replace(/\s/g, "") === "") {
+            document.getElementById("passwordError").textContent = "Hasło nie może składać się wyłącznie ze spacji.";
+            errorMessages.push("Hasło nie może zawierać wyłącznie spacji.");
+        }
+        else if (password.length < 2 || password.length > 60) {
+            document.getElementById("passwordError").textContent = "Hasło powinno mieć od 2 do 60 znaków.";
+            errorMessages.push("Niepoprawna długość hasła.");
+        }
+
+        if(userName.length === 0){
+            document.getElementById("userNameError").textContent="Pole nazwa użytkownika nie może być puste";
+            errorMessages.push("Pole nazwa użytkownika nie może być puste");
+        }
+
+        if (errorMessages.length > 0) {
+            document.getElementById("summaryError").innerHTML = "Wystąpiły błędy:<br>" + errorMessages.join("<br>");
+            return false;
+        }
+        console.log("Rejestracja udana!")
+        return true;
+    }
+</script>
+</body>
+</html>
