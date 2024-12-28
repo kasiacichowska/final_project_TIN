@@ -9,6 +9,57 @@
 
 </script>
 <body>
+<h3>Logowanie do konta</h3>
+<form name="logInForm" onsubmit="return validateForm()">
+    <div>
+        <p>Nazwa użytkownika: </p>
+        <input type="text" name="username"/>
+        <span id="userNameError" style="color:red;"></span>
+        <p>Hasło: </p>
+        <input type="password" name="haslo" />
+        <span id="passwordError" style="color:red;"></span>
+    </div>
+    <br>
+    <input type="submit" value="Submit">
+    <p id="summaryError" style="color:red;"></p>
+</form>
+<script>
+    function validateForm() {
+        const userNameField = document.forms["logInForm"]["username"];
+        const passwordField = document.forms["logInForm"]["haslo"];
+        const userName = userNameField.value;
+        const password = passwordField.value;
+        const errorMessages = [];
 
+        document.getElementById("passwordError").textContent = "";
+        document.getElementById("userNameError").textContent = "";
+        document.getElementById("summaryError").textContent = "";
+
+
+        if (password.length === 0){
+            document.getElementById("passwordError").textContent = "Pole Haslo nie może być puste";
+            errorMessages.push("Pole haslo nie może być puste");
+        }
+        else if (password.replace(/\s/g, "") === "") {
+            document.getElementById("passwordError").textContent = "Hasło nie może składać się wyłącznie ze spacji.";
+            errorMessages.push("Hasło nie może zawierać wyłącznie spacji.");
+        }
+        else if (password.length < 2 || password.length > 60) {
+            document.getElementById("passwordError").textContent = "Hasło powinno mieć od 2 do 60 znaków.";
+            errorMessages.push("Niepoprawna długość hasła.");
+        }
+
+        if(userName.length === 0){
+            document.getElementById("userNameError").textContent="Pole Nazwa użytkownika nie może być puste";
+            errorMessages.push("Pole nazwa użytkownika nie może być puste");
+        }
+
+        if (errorMessages.length > 0) {
+            document.getElementById("summaryError").innerHTML = "Wystąpiły błędy:<br>" + errorMessages.join("<br>");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
