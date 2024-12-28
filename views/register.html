@@ -11,13 +11,17 @@
 
 <form name="registrationForm" onsubmit="return validateForm()">
     <div>
-        <p>Nazwa użytkownika: <input type="text" name="username"/></p>
+        <p>Nazwa użytkownika: </p>
+        <input type="text" name="username"/>
         <span id="userNameError" style="color:red;"></span>
-        <p>E-mail: <input type="text" name="email" /></p>
+        <p>E-mail: </p>
+        <input type="text" name="email" />
         <span id="emailError" style="color:red;"></span>
-        <p>Hasło: <input type="password" name="haslo" /></p>
+        <p>Hasło: </p>
+        <input type="password" name="haslo" />
         <span id="passwordError" style="color:red;"></span>
     </div>
+    <br>
     <input type="submit" value="Submit">
     <p id="summaryError" style="color:red;"></p>
 </form>
@@ -25,14 +29,16 @@
 <script>
     function validateForm() {
         const emailField = document.forms["registrationForm"]["email"];
-        const userName = document.forms["registrationForm"]["username"];
+        const userNameField = document.forms["registrationForm"]["username"];
         const passwordField = document.forms["registrationForm"]["haslo"];
         const email = emailField.value;
+        const userName = userNameField.value;
         const password = passwordField.value;
         const errorMessages = [];
 
         document.getElementById("emailError").textContent = "";
         document.getElementById("passwordError").textContent = "";
+        document.getElementById("userNameError").textContent = "";
         document.getElementById("summaryError").textContent = "";
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -51,7 +57,7 @@
         }
 
         if (password.length === 0){
-            document.getElementById("passwordError").textContent = "Pole haslo nie może być puste";
+            document.getElementById("passwordError").textContent = "Pole Haslo nie może być puste";
             errorMessages.push("Pole haslo nie może być puste");
         }
         else if (password.replace(/\s/g, "") === "") {
@@ -64,7 +70,7 @@
         }
 
         if(userName.length === 0){
-            document.getElementById("userNameError").textContent="Pole nazwa użytkownika nie może być puste";
+            document.getElementById("userNameError").textContent="Pole Nazwa użytkownika nie może być puste";
             errorMessages.push("Pole nazwa użytkownika nie może być puste");
         }
 
@@ -72,7 +78,6 @@
             document.getElementById("summaryError").innerHTML = "Wystąpiły błędy:<br>" + errorMessages.join("<br>");
             return false;
         }
-        console.log("Rejestracja udana!")
         return true;
     }
 </script>
