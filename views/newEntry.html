@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=pl>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,12 +7,60 @@
 </head>
 <body>
 <h3>Dodaj nowy wpis do swojego Pamiętnika!</h3>
-<div>
-    <p>Tytuł wpisu:</p>
-    <input type="text" name="title"/>
-    <p>Treść wpisu:</p>
-    <textarea rows="4" cols="70" maxlength="2000" name="content"></textarea>
+<p style="color:red;">Uwaga! Wpis może mieć do 2000 znaków!</p>
 
-</div>
+<form name="newEntryForm" onsubmit="return validateForm()">
+    <div>
+        <p>Tytuł wpisu:</p>
+        <input type="text" name="title"/>
+        <span id="titleError" style="color:red;"></span>
+
+        <p>Treść wpisu:</p>
+        <textarea rows="12" cols="70" maxlength="2000" name="content" oninput="countCharacters()"></textarea>
+        <span id="contentError" style="color:red;"></span>
+
+        <p>Pozostało znaków: <span id="charCount">2000</span></p>
+
+        <br>
+        <input type="submit" value="Submit">
+        <p id="summaryError" style="color:red;"></p>
+    </div>
+</form>
+
+<script>
+    function countCharacters() {
+        const contentField = document.forms["newEntryForm"]["content"];
+        const remaining = 2000 - contentField.value.length;
+        document.getElementById("charCount").textContent = remaining;
+    }
+
+    function validateForm() {
+        const errorMessages = [];
+
+        const titleField = document.forms["newEntryForm"]["title"];
+        const contentField = document.forms["newEntryForm"]["content"];
+
+        const title = titleField.value;
+        const content = contentField.value;
+
+        document.getElementById("summaryError").textContent = "";
+        document.getElementById("titleError").textContent = "";
+        document.getElementById("contentError").textContent = "";
+
+        if (title.length === 0) {
+            document.getElementById("titleError").textContent = "Pole Tytuł nie może być puste";
+            errorMessages.push("Pole Tytuł nie może być puste");
+        }
+        if (content.length === 0) {
+            document.getElementById("contentError").textContent = "Pole Treść nie może być puste";
+            errorMessages.push("Pole Treść nie może być puste");
+        }
+        if (errorMessages.length > 0) {
+            document.getElementById("summaryError").innerHTML = "Wystąpiły błędy:<br>" + errorMessages.join("<br>");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
