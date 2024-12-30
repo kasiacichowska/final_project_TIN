@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    font-family: Fantasy, Copperplate, serif;
+    background-color: #c8d9e6;
+    color: #567c8d;
+    padding: 60px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: #fff;
+    color: #567c8d;
+}
+button{
+    background-color: #c8d9e6;
+    border: none;
+    padding: 10px 20px;
+}
+button:hover {
+    background-color: #a0b2bd;
+}
+
+@media print {
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    header {
+        color: #000;
+        padding: 20px 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+}

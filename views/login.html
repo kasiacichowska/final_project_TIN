@@ -16,7 +16,7 @@
         <input type="text" name="username"/>
         <span id="userNameError" style="color:red;"></span>
         <p>Hasło: </p>
-        <input type="password" name="haslo" />
+        <input type="password" name="haslo"/>
         <span id="passwordError" style="color:red;"></span>
     </div>
     <br>
@@ -36,21 +36,19 @@
         document.getElementById("summaryError").textContent = "";
 
 
-        if (password.length === 0){
+        if (password.length === 0) {
             document.getElementById("passwordError").textContent = "Pole Haslo nie może być puste";
             errorMessages.push("Pole haslo nie może być puste");
-        }
-        else if (password.replace(/\s/g, "") === "") {
+        } else if (password.replace(/\s/g, "") === "") {
             document.getElementById("passwordError").textContent = "Hasło nie może składać się wyłącznie ze spacji.";
             errorMessages.push("Hasło nie może zawierać wyłącznie spacji.");
-        }
-        else if (password.length < 2 || password.length > 60) {
+        } else if (password.length < 2 || password.length > 60) {
             document.getElementById("passwordError").textContent = "Hasło powinno mieć od 2 do 60 znaków.";
             errorMessages.push("Niepoprawna długość hasła.");
         }
 
-        if(userName.length === 0){
-            document.getElementById("userNameError").textContent="Pole Nazwa użytkownika nie może być puste";
+        if (userName.length === 0) {
+            document.getElementById("userNameError").textContent = "Pole Nazwa użytkownika nie może być puste";
             errorMessages.push("Pole nazwa użytkownika nie może być puste");
         }
 

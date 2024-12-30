@@ -15,10 +15,10 @@
         <input type="text" name="username"/>
         <span id="userNameError" style="color:red;"></span>
         <p>E-mail: </p>
-        <input type="text" name="email" />
+        <input type="text" name="email"/>
         <span id="emailError" style="color:red;"></span>
         <p>Hasło: </p>
-        <input type="password" name="haslo" />
+        <input type="password" name="haslo"/>
         <span id="passwordError" style="color:red;"></span>
     </div>
     <br>
@@ -43,34 +43,30 @@
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-        if(email.length === 0){
+        if (email.length === 0) {
             document.getElementById("emailError").textContent = "Pole Email nie może być puste";
             errorMessages.push("Pole Email nie może być puste");
-        }
-        else if (email.replace(/\s/g, "") === "") {
+        } else if (email.replace(/\s/g, "") === "") {
             document.getElementById("emailError").textContent = "Email nie może składać się wyłącznie ze spacji.";
             errorMessages.push("Email nie może zawierać wyłącznie spacji.");
-        }
-        else if (!emailRegex.test(email)) {
+        } else if (!emailRegex.test(email)) {
             document.getElementById("emailError").textContent = "Wprowadź poprawny adres e-mail.";
             errorMessages.push("Niepoprawny adres e-mail.");
         }
 
-        if (password.length === 0){
+        if (password.length === 0) {
             document.getElementById("passwordError").textContent = "Pole Haslo nie może być puste";
             errorMessages.push("Pole haslo nie może być puste");
-        }
-        else if (password.replace(/\s/g, "") === "") {
+        } else if (password.replace(/\s/g, "") === "") {
             document.getElementById("passwordError").textContent = "Hasło nie może składać się wyłącznie ze spacji.";
             errorMessages.push("Hasło nie może zawierać wyłącznie spacji.");
-        }
-        else if (password.length < 2 || password.length > 60) {
+        } else if (password.length < 2 || password.length > 60) {
             document.getElementById("passwordError").textContent = "Hasło powinno mieć od 2 do 60 znaków.";
             errorMessages.push("Niepoprawna długość hasła.");
         }
 
-        if(userName.length === 0){
-            document.getElementById("userNameError").textContent="Pole Nazwa użytkownika nie może być puste";
+        if (userName.length === 0) {
+            document.getElementById("userNameError").textContent = "Pole Nazwa użytkownika nie może być puste";
             errorMessages.push("Pole nazwa użytkownika nie może być puste");
         }
 
