@@ -11,12 +11,6 @@ header {
     color: #567c8d;
     padding: 60px 0;
     text-align: center;
-    button{
-        background-color: #c8d9e6;
-        color: #567c8d;
-        border: 2px solid #567c8d;
-        border-radius: 5px;
-    }
 }
 
 main {
@@ -25,22 +19,26 @@ main {
     margin: 0 auto;
     background-color: #fff;
     color: #567c8d;
-    button{
-        background-color: #c8d9e6;
-        border: none;
-        padding: 10px 20px;
-    }
+    text-align: center;
 }
-
+button{
+    background-color: #c8d9e6;
+    border: none;
+    padding: 10px 20px;
+}
 button:hover {
     background-color: #a0b2bd;
 }
 .custom-input {
+    background-color: #c8d9e6;
     color: #000000;
     border: 2px solid #d9c6b6;
     padding: 10px;
     border-radius: 5px;
 
+}
+.custom-input:hover{
+    background-color: #bdccd3;
 }
 
 @media print {

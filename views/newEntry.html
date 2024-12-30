@@ -11,6 +11,9 @@
     <div class="header">
         <h1>Personal Diary</h1>
         <p style="font-family: 'Lucida Grande',monospace">Prosta aplikacja do zapisywania rozmyśleń</p>
+        <a href="mainpage.html">
+            <button>Strona główna</button>
+        </a>
     </div>
 </header>
 <body>
@@ -21,11 +24,11 @@
 <form name="newEntryForm" onsubmit="return validateForm()">
     <div>
         <p>Tytuł wpisu:</p>
-        <input type="text" name="title"/>
+        <input type="text" name="title" class="custom-input"/>
         <span id="titleError" style="color:#e38f8f;"></span>
 
         <p>Treść wpisu:</p>
-        <textarea rows="12" cols="70" maxlength="2000" name="content" oninput="countCharacters()"></textarea>
+        <textarea rows="12" cols="70" maxlength="2000" name="content" oninput="countCharacters()" class="custom-input"></textarea>
         <span id="contentError" style="color:#e38f8f;"></span>
 
         <p>Pozostało znaków: <span id="charCount">2000</span></p>

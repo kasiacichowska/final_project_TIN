@@ -1,28 +1,32 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="../public/styles/login.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Personal Diary - Logowanie</title>
 </head>
-<script>
-
-</script>
+<header>
+    <div class="header">
+        <h1>Personal Diary</h1>
+        <p style="font-family: 'Lucida Grande',monospace">Prosta aplikacja do zapisywania rozmyśleń</p>
+    </div>
+</header>
 <body>
+<main>
 <h3>Logowanie do konta</h3>
 <form name="logInForm" onsubmit="return validateForm()">
     <div>
-        <p>Nazwa użytkownika: </p>
-        <input type="text" name="username"/>
-        <span id="userNameError" style="color:red;"></span>
-        <p>Hasło: </p>
-        <input type="password" name="haslo"/>
+        <input type="text" class="custom-input"name="username" placeholder="Nazwa użytkownika"/><br>
+        <span id="userNameError" style="color:red;"></span><br>
+        <input type="password" class="custom-input" name="haslo" placeholder="Hasło"/><br>
         <span id="passwordError" style="color:red;"></span>
     </div>
     <br>
-    <input type="submit" value="Submit">
+    <button type="submit">Zaloguj</button>
     <p id="summaryError" style="color:red;"></p>
 </form>
+</main>
 <script>
     function validateForm() {
         const userNameField = document.forms["logInForm"]["username"];
@@ -38,7 +42,7 @@
 
         if (password.length === 0) {
             document.getElementById("passwordError").textContent = "Pole Haslo nie może być puste";
-            errorMessages.push("Pole haslo nie może być puste");
+            errorMessages.push("Pole Haslo nie może być puste");
         } else if (password.replace(/\s/g, "") === "") {
             document.getElementById("passwordError").textContent = "Hasło nie może składać się wyłącznie ze spacji.";
             errorMessages.push("Hasło nie może zawierać wyłącznie spacji.");
@@ -49,7 +53,7 @@
 
         if (userName.length === 0) {
             document.getElementById("userNameError").textContent = "Pole Nazwa użytkownika nie może być puste";
-            errorMessages.push("Pole nazwa użytkownika nie może być puste");
+            errorMessages.push("Pole Nazwa użytkownika nie może być puste");
         }
 
         if (errorMessages.length > 0) {
